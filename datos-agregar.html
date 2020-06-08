@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Optimotion Things Web Server</title>
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body>
+    <div class="main-bar">
+        <div class="mobile-menu">
+            <a href="index.html">
+                <img src="img/Optimotion Fondo Transparente.png" alt="Imagen Optimotion">
+            </a>
+            <a href="#nav" class="menu-symbol">
+             Menu Principal
+            </a>
+        </div>
+        <div class="navbar-title">
+            <a href="index.html">
+                <img src="img/Optimotion Fondo Transparente.png" alt="Imagen Optimotion">
+            </a>
+            <nav id="nav" class="main-nav">
+                <a href="usuarios.html">Registro de Usuarios</a>
+                <a href="subscripcion.html">Subscripcion</a>
+                <a href="datos.html">Entrada de datos</a>
+                <div class="dropdown">
+                    <a href="#">Mediciones</a>
+                    <div class="dropdown-content">
+                        <a href="graficos-tiempo-real.html">Gráficos en tiempo real</a>
+                        <a href="historicos-y-tendencias.html">Históricos y tendencias</a>
+                        <a href="correlaciones.html">Correlaciones</a>
+                    </div>
+                </div>
+                <div class="dropdown">
+                    <a href="#">Configuración</a>
+                    <div class="dropdown-content">
+                        <a href="alarmas-correo.html">Configuración de Alarmas por Correo Electronico</a>
+                        <a href="alarmas-texto.html">Configuración de Alarmas por mensajes de texto</a>
+                        <a href="acciones-fisicas.html">Configuración de Acciones Físicas</a>
+                    </div>
+                </div>
+
+                <div class="dropdown">
+                    <a href="#">Utilidades</a>
+                    <div class="dropdown-content">
+                        <a href="analisis-servidor.html">Analisis de servidor</a>
+                    </div>
+                </div>
+                <a href="login.html">Iniciar Sesión</a>
+                <a href="#" class="close-menu">
+                    <i class="fas fa-times">Cerrar Menú</i>
+                </a>
+            </nav>
+        </div>
+    </div>
+
+
+    <div class="container">
+        <h2>Configuración de Entrada de Datos</h2>
+        <form>
+            <div class="form-group">
+                <label for="exampleFormControlInput1">Valor a monitorear</label>
+                <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="tipo de valor">
+            </div>
+            <div class="form-group">
+                <label for="exampleFormControlSelect1">Tipo de Entrada de Valor</label>
+                <select class="form-control" id="exampleFormControlSelect1">
+                <option>Digital</option>
+                <option>Análoga</option>
+                <option>UART</option>
+                <option>SPI</option>
+                <option>I2C</option>
+              </select>
+            </div>
+            <div class="form-group">
+                <label for="exampleFormControlSelect2">Ubicacion de Valor</label>
+                <select class="form-control" id="exampleFormControlSelect2">
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
+                <option>5</option>
+              </select>
+            </div>
+            <div class="form-group">
+                <label for="exampleFormControlInput1">Unidad de medición</label>
+                <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="unidad de medición">
+            </div>
+            <div class="form-group">
+                <label for="exampleFormControlTextarea1">Rango de Conversion en unidades de medición</label>
+                <div class="row">
+                    <div class="col">
+                        <input type="min" class="form-control" id="Min" placeholder="Minimo">
+                    </div>
+                    <div class="col">
+                        <input type="max" class="form-control" id="Max" placeholder="Maximo">
+                    </div>
+                </div>
+            </div>
+            <input type="submit"></input>
+        </form>
+    </div>
+
+
+
+</body>
+
+</html>
