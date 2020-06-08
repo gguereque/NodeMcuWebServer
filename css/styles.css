@@ -71,6 +71,7 @@ table {
     text-align: center;
     margin-bottom: 2rem;
     background-color: white;
+    border-spacing: 0px;
 }
 
 th,
@@ -315,6 +316,32 @@ label {
     margin-left: 1rem;
 }
 
+.index-table th {
+    height: 60px;
+}
+
+
+.index-table tbody tr th {
+    border-left: 1px solid #e6e6e6
+}
+
+.index-table tbody tr:hover {
+    background-color: #f5f5f5;
+}
+
+.index-table tbody tr td:last-child {
+    border-right: 1px solid #e6e6e6
+
+}
+
+.index-table tbody tr td a {
+    border-radius: 5px;
+}
+
+.index-table tbody tr td a:hover {
+    font-size:17px;
+}
+
 
 /** Botones **/
 
@@ -429,6 +456,12 @@ input[type=reset] {
 .container-custom {
     max-width: 95%;
     margin: 0 auto;
+    font-family: 'Lato', sans-serif;
+}
+
+.main-title {
+    padding: 10px;
+    color: #000000c9
 }
 
 @media(min-width: 992px) {
@@ -448,18 +481,56 @@ input[type=reset] {
     margin: 0 auto;
 }
 
+.login {
+    font-family: 'Lato', sans-serif;
+}
+
+.login-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.login-form form input {
+    background-color: #e2e1e1b3;
+   
+}
+
+.login-form form label {
+    font-size: 20px;
+}
+
+.login-form h1 {
+    text-align: center;
+    font-size: 29px
+}
+
+.form-check {
+    margin-top: 10px
+}
+
 
 /** Navbar **/
 
 .main-bar {
-    background-color: var(--optimotion-blue);
+    background-color: #b2d7f2;
     padding: 1.5rem 0;
+    font-family: 'Roboto', sans-serif;
 }
+
+
 
 .second-bar {
     background-color: var(--optimotion-gray);
     height: 10px;
 }
+
+.navbar-title {
+    font-family: 'Roboto', sans-serif;
+    font-size:15px;
+}
+
 
 @media(min-width: 992px) {
     .navbar-title {
@@ -499,6 +570,7 @@ input[type=reset] {
     overflow: hidden;
 }
 
+
 .main-nav {
     overflow: hidden;
 }
@@ -530,13 +602,18 @@ input[type=reset] {
 }
 
 .main-nav a {
-    color: black;
     text-decoration: none;
     font-size: 1.4rem;
     font-weight: bold;
     position: relative;
     display: block;
     margin: 0 1rem;
+    color: gray;
+    font-size: 17px;
+}
+
+.main-nav a:hover {
+    color: black
 }
 
 .main-nav a:last-child {
