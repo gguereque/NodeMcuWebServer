@@ -534,6 +534,13 @@ input[type=reset] {
     font-size: 15px;
 }
 
+.image-logo {
+    width: 22%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 @media(min-width: 992px) {
     .navbar-title {
         display: flex;
@@ -593,7 +600,7 @@ input[type=reset] {
 @media(min-width: 992px) {
     .main-nav {
         max-height: unset;
-        max-width: 75%;
+        /* max-width: 75%; */
         flex-direction: row;
         padding: 0 2rem;
     }
@@ -609,13 +616,14 @@ input[type=reset] {
 
 .main-nav a {
     text-decoration: none;
-    font-size: 1.4rem;
+    font-size: 1.2vw;
     font-weight: bold;
     position: relative;
     display: block;
     margin: 0 1rem;
     color: gray;
-    font-size: 17px;
+    /* font-size: 17px; */
+
 }
 
 .main-nav a:hover {
