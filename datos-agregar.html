@@ -67,18 +67,21 @@
                 <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="tipo de valor">
             </div>
             <div class="form-group">
-                <label for="exampleFormControlSelect1">Tipo de Entrada de Valor</label>
-                <select class="form-control" id="exampleFormControlSelect1">
+                <label for="CommOptions">Tipo de Entrada de Valor</label>
+                <select class="form-control" id="CommOptions">
                 <option>Digital</option>
                 <option>Análoga</option>
                 <option>UART</option>
                 <option>SPI</option>
                 <option>I2C</option>
+                <option>OPC-UA</option>
+                <option>MODBUS-RTU</option>
+                <option>MODBUS-TCP</option>
               </select>
             </div>
-            <div class="form-group">
-                <label for="exampleFormControlSelect2">Ubicacion de Valor</label>
-                <select class="form-control" id="exampleFormControlSelect2">
+            <div class="form-group" id="TagInputContainer">
+                <label for="TagOptions">Ubicacion de Valor</label>
+                <select class="form-control" id="TagOptions">
                 <option>1</option>
                 <option>2</option>
                 <option>3</option>
@@ -87,11 +90,11 @@
               </select>
             </div>
             <div class="form-group">
-                <label for="exampleFormControlInput1">Unidad de medición</label>
-                <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="unidad de medición">
+                <label for="UOM">Unidad de medición</label>
+                <input type="text" class="form-control" id="UOM" placeholder="unidad de medición">
             </div>
             <div class="form-group">
-                <label for="exampleFormControlTextarea1">Rango de Conversion en unidades de medición</label>
+                <label for="">Rango de Conversion en unidades de medición</label>
                 <div class="row">
                     <div class="col">
                         <input type="min" class="form-control" id="Min" placeholder="Minimo">
