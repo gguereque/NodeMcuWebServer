@@ -389,6 +389,12 @@ input[type=reset] {
 
 .btn-info {
     background-color: rgb(99, 111, 169);
+    border-radius: 10px;
+    
+}
+
+.btn-info:hover {
+    font-size:18px;
 }
 
 .btn-danger {
@@ -497,7 +503,7 @@ input[type=reset] {
    
 }
 
-.login-form form label {
+.login-form form label:not(:last-child) {
     font-size: 20px;
 }
 
@@ -568,6 +574,11 @@ input[type=reset] {
 
 .main-bar {
     overflow: hidden;
+}
+
+.main-bar h1{
+    color:gray;
+    margin:0;
 }
 
 
@@ -664,8 +675,17 @@ input[type=reset] {
 
 .mobile-menu a {
     color: black;
-    font-family: 'FontAwesome';
+    font-family: 'Lato', sans-serif;
     font-size: 2rem;
     padding: 10px 0;
     text-decoration: none;
+}
+
+/* FOOTER  */
+footer {
+    text-align: center;
+    background-color: #b2d7f2;
+    padding: 15px;
+    font-size: 16px;
+    font-family: 'Lato', sans-serif;
 }
