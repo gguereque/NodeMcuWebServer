@@ -68,26 +68,19 @@
             </div>
             <div class="form-group">
                 <label for="CommOptions">Tipo de Entrada de Valor</label>
-                <select class="form-control" id="CommOptions">
-                <option>Digital</option>
-                <option>Análoga</option>
-                <option>UART</option>
-                <option>SPI</option>
-                <option>I2C</option>
-                <option>OPC-UA</option>
-                <option>MODBUS-RTU</option>
-                <option>MODBUS-TCP</option>
+                <select class="form-control" id="CommOptions" onchange="commChanged()">
+                <option value="digital">Digital</option>
+                <option value="analog">Análoga</option>
+                <option value="uart">UART</option>
+                <option value="spi">SPI</option>
+                <option value="i2c">I2C</option>
+                <option value="opc-ua">OPC-UA</option>
+                <option value="modbus-rtu">MODBUS-RTU</option>
+                <option value="modbus-tcp">MODBUS-TCP</option>
               </select>
             </div>
             <div class="form-group" id="TagInputContainer">
-                <label for="TagOptions">Ubicacion de Valor</label>
-                <select class="form-control" id="TagOptions">
-                <option>1</option>
-                <option>2</option>
-                <option>3</option>
-                <option>4</option>
-                <option>5</option>
-              </select>
+
             </div>
             <div class="form-group">
                 <label for="UOM">Unidad de medición</label>
@@ -107,9 +100,191 @@
             <input type="submit"></input>
         </form>
     </div>
-
-
-
 </body>
+<script>
+    window.onload = function() {
+        option_digital();
+    }
+
+    function commChanged() {
+
+        var value = document.getElementById("CommOptions").value;
+        console.log(value);
+        removeElement("TagInputContainer");
+
+        switch (value) {
+            case "digital":
+                option_digital();
+                break;
+            case "analog":
+                option_analog();
+                break;
+            case "uart":
+                option_uart();
+                break;
+        }
+
+    }
+
+    function option_digital() {
+        var label_node = document.createElement("label");
+        label_node.setAttribute("for", "DigitalOptions");
+        label_node.innerHTML = "Ubicación de Valor a Monitorear";
+        var select_digital = document.createElement("select");
+        select_digital.setAttribute("id", "DigitalOptions");
+        // Option 1
+        var opt = document.createElement('option');
+        opt.appendChild(document.createTextNode('1'));
+        opt.value = "1";
+        select_digital.appendChild(opt);
+        // Option 2
+        var opt = document.createElement('option');
+        opt.appendChild(document.createTextNode('2'));
+        opt.value = "2";
+        select_digital.appendChild(opt);
+        // Option 3
+        var opt = document.createElement('option');
+        opt.appendChild(document.createTextNode('3'));
+        opt.value = "3";
+        select_digital.appendChild(opt);
+        // Option 4
+        var opt = document.createElement('option');
+        opt.appendChild(document.createTextNode('4'));
+        opt.value = "4";
+        select_digital.appendChild(opt);
+        // Option 5
+        var opt = document.createElement('option');
+        opt.appendChild(document.createTextNode('5'));
+        opt.value = "5";
+        select_digital.appendChild(opt);
+
+        document.getElementById("TagInputContainer").appendChild(label_node);
+        document.getElementById("TagInputContainer").appendChild(select_digital);
+    }
+
+    function option_analog() {
+
+        var label_node = document.createElement("label");
+        label_node.setAttribute("for", "AnalogOptions");
+        label_node.innerHTML = "Ubicación de Valor a Monitorear";
+        var select_digital = document.createElement("select");
+        select_digital.setAttribute("id", "AnalogOptions");
+        // Option 1
+        var opt = document.createElement('option');
+        opt.appendChild(document.createTextNode('A1 (0-10VDC)'));
+        opt.value = "A1";
+        select_digital.appendChild(opt);
+        // Option 2
+        var opt = document.createElement('option');
+        opt.appendChild(document.createTextNode('A2 (0-10VDC)'));
+        opt.value = "A2";
+        select_digital.appendChild(opt);
+        // Option 3
+        var opt = document.createElement('option');
+        opt.appendChild(document.createTextNode('A3 (0-10VDC)'));
+        opt.value = "A3";
+        select_digital.appendChild(opt);
+        // Option 4
+        var opt = document.createElement('option');
+        opt.appendChild(document.createTextNode('A4 (4-20 mA)'));
+        opt.value = "A4";
+        select_digital.appendChild(opt);
+        // Option 5
+        var opt = document.createElement('option');
+        opt.appendChild(document.createTextNode('A5 (4-20 mA)'));
+        opt.value = "A5";
+        select_digital.appendChild(opt);
+
+        document.getElementById("TagInputContainer").appendChild(label_node);
+        document.getElementById("TagInputContainer").appendChild(select_digital);
+    }
+
+    function option_uart() {
+        set_uart_baudrate();
+        set_uart_byte("Byte Iniciador", "InitByte");
+        set_uart_byte("Byte de Separación de datos", "SepByte");
+        set_uart_byte("Byte de Finalización", "EndByte");
+    }
+
+
+
+
+    function set_uart_baudrate() {
+        var label_node = document.createElement("label");
+        label_node.setAttribute("for", "Baud Rate:");
+        label_node.innerHTML = "Baud Rate";
+        var select_uart = document.createElement("select");
+        select_uart.setAttribute("id", "BaudOptions");
+
+        for (let i = 0; i <= 6; i++) {
+            var opt = document.createElement('option');
+            switch (i) {
+                case 1:
+                    opt.appendChild(document.createTextNode('4800'));
+                    opt.value = "4800";
+                    break;
+                case 2:
+                    opt.appendChild(document.createTextNode('9600'));
+                    opt.value = "9600";
+                    break;
+                case 3:
+                    opt.appendChild(document.createTextNode('144000'));
+                    opt.value = "144000";
+                    break;
+                case 4:
+                    opt.appendChild(document.createTextNode('192000'));
+                    opt.value = "192000";
+                    break;
+                case 5:
+                    opt.appendChild(document.createTextNode('38400'));
+                    opt.value = "38400";
+                    break;
+                case 6:
+                    opt.appendChild(document.createTextNode('57600'));
+                    opt.value = "57600";
+                    break;
+                case 7:
+                    opt.appendChild(document.createTextNode('115200'));
+                    opt.value = "115200";
+                    break;
+                case 8:
+                    opt.appendChild(document.createTextNode('128000'));
+                    opt.value = "128000";
+                    break;
+                case 9:
+                    opt.appendChild(document.createTextNode('256000'));
+                    opt.value = "256000";
+                    break;
+            }
+
+            select_uart.appendChild(opt);
+        }
+
+        document.getElementById("TagInputContainer").appendChild(label_node);
+        document.getElementById("TagInputContainer").appendChild(select_uart);
+
+    }
+
+    function set_uart_byte(message, id) {
+        var label_node = document.createElement("label");
+        label_node.setAttribute("for", id);
+        label_node.innerHTML = message;
+        var input_uart_byte = document.createElement("input");
+        input_uart_byte.setAttribute("type", "text");
+        input_uart_byte.setAttribute("id", id);
+        input_uart_byte.setAttribute("placeholder", "Formato 0xCC");
+        document.getElementById("TagInputContainer").appendChild(label_node);
+        document.getElementById("TagInputContainer").appendChild(input_uart_byte);
+
+    }
+
+    function removeElement(elementId) {
+        // Removes an element from the document
+        var element = document.getElementById(elementId);
+        if (element.hasChildNodes()) {
+            element.innerHTML = '';
+        }
+    }
+</script>
 
 </html>

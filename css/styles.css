@@ -313,15 +313,14 @@ label {
     display: block;
     overflow-x: auto;
     overflow-y: auto;
-    height: 400px;
     padding: 0 2rem;
+    height: 75vh;
     margin-left: 1rem;
 }
 
 .index-table th {
     height: 60px;
 }
-
 
 .index-table tbody tr th {
     border-left: 1px solid #e6e6e6
@@ -333,7 +332,6 @@ label {
 
 .index-table tbody tr td:last-child {
     border-right: 1px solid #e6e6e6
-
 }
 
 .index-table tbody tr td a {
@@ -341,7 +339,7 @@ label {
 }
 
 .index-table tbody tr td a:hover {
-    font-size:17px;
+    font-size: 17px;
 }
 
 
@@ -392,11 +390,10 @@ input[type=reset] {
 .btn-info {
     background-color: rgb(99, 111, 169);
     border-radius: 10px;
-    
 }
 
 .btn-info:hover {
-    font-size:18px;
+    font-size: 18px;
 }
 
 .btn-danger {
@@ -503,7 +500,6 @@ input[type=reset] {
 
 .login-form form input {
     background-color: #e2e1e1b3;
-   
 }
 
 .login-form form label:not(:last-child) {
@@ -528,8 +524,6 @@ input[type=reset] {
     font-family: 'Roboto', sans-serif;
 }
 
-
-
 .second-bar {
     background-color: var(--optimotion-gray);
     height: 10px;
@@ -537,9 +531,8 @@ input[type=reset] {
 
 .navbar-title {
     font-family: 'Roboto', sans-serif;
-    font-size:15px;
+    font-size: 15px;
 }
-
 
 @media(min-width: 992px) {
     .navbar-title {
@@ -579,11 +572,10 @@ input[type=reset] {
     overflow: hidden;
 }
 
-.main-bar h1{
-    color:gray;
-    margin:0;
+.main-bar h1 {
+    color: gray;
+    margin: 0;
 }
-
 
 .main-nav {
     overflow: hidden;
@@ -684,7 +676,9 @@ input[type=reset] {
     text-decoration: none;
 }
 
+
 /* FOOTER  */
+
 footer {
     background-color: #b2d7f2;
     font-size: 16px;
@@ -696,5 +690,4 @@ footer {
     display: flex;
     align-items: center;
     justify-content: center;
-
 }
