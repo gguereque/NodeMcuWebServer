@@ -74,7 +74,7 @@
                 <option value="uart">UART</option>
                 <option value="tcp">TCP Client</option>
                 <option value="udp">UDP</option>
-                <option value="tcp">HTTP Client</option>
+                <option value="http">HTTP</option>
                 <option value="opc-ua">OPC-UA</option>
                 <option value="modbus-rtu">MODBUS-RTU</option>
                 <option value="modbus-tcp">MODBUS-TCP</option>
@@ -84,11 +84,15 @@
 
             </div>
             <div class="form-group">
+                <label for="UOM">Formula / Factor de conversión</label>
+                <input type="text" class="form-control" id="FDC" placeholder="4 * %VALOR% + 5">
+            </div>
+            <div class="form-group">
                 <label for="UOM">Unidad de medición</label>
                 <input type="text" class="form-control" id="UOM" placeholder="unidad de medición">
             </div>
             <div class="form-group">
-                <label for="">Rango de Conversion en unidades de medición</label>
+                <label for="">Rangos de unidades de medición en condiciones normales</label>
                 <div class="row">
                     <div class="col">
                         <input type="min" class="form-control" id="Min" placeholder="Minimo">
@@ -107,6 +111,7 @@
         option_digital();
     }
 
+
     function commChanged() {
 
         var value = document.getElementById("CommOptions").value;
@@ -122,6 +127,25 @@
                 break;
             case "uart":
                 option_uart();
+                break;
+            case "tcp":
+                option_tcp();
+                break;
+            case "udp":
+                option_tcp_udp();
+                break;
+            case "http":
+                set_input("URL de información", "httpUrl", "https://xxx.xxx.xx.x/values?sensor=value");
+                break;
+            case "modbus-rtu":
+                set_uart_baudrate();
+                set_input("ID Esclavo", "slaveId", "1");
+                set_input("Dirección / Rango de Registros de Dato", "rtuAddress", "400001 o 40001-40003");
+                break;
+            case "modbus-tcp":
+                set_input("Dirección IP", "tcpIpAddress", "192.168.0.1");
+                set_input("ID Unidad", "unitId", "1");
+                set_input("Dirección / Rango de Registros de Dato", "tcpAddress", "400001 o 40001-40003");
                 break;
         }
 
@@ -161,6 +185,29 @@
 
         document.getElementById("TagInputContainer").appendChild(label_node);
         document.getElementById("TagInputContainer").appendChild(select_digital);
+
+        var div_counter = document.createElement("div");
+        div_counter.setAttribute("class", "d-flex mb-2 mt-1");
+        var label_counter = document.createElement("label");
+        label_counter.innerHTML = "Utilizar entrada como contador";
+        var check_counter = document.createElement("input");
+        check_counter.setAttribute("type", "checkbox");
+        check_counter.setAttribute("class", "check-input mr-1");
+        check_counter.setAttribute("id", "checkCounter");
+        check_counter.setAttribute("onclick", "counter_setting()");
+
+        div_counter.appendChild(check_counter);
+        div_counter.appendChild(label_counter);
+        document.getElementById("TagInputContainer").appendChild(div_counter);
+    }
+
+    function counter_setting() {
+        var checked = !checked;
+        if (checked) {
+            set_input("Valor maximo de conteo", "maxCountDigital", "10");
+            set_input("Relacion unidades conteo : unidades salida", "unitRatio", "10:1");
+
+        }
     }
 
     function option_analog() {
@@ -202,9 +249,16 @@
 
     function option_uart() {
         set_uart_baudrate();
-        set_uart_byte("Byte Iniciador", "InitByte");
-        set_uart_byte("Byte de Separación de datos", "SepByte");
-        set_uart_byte("Byte de Finalización", "EndByte");
+        set_input("Byte Iniciador", "InitByte", "Formato 0xCC");
+        set_input("Byte de Separación de datos", "SepByte", "Formato 0xCC");
+        set_input("Byte de Finalización", "EndByte");
+    }
+
+    function option_tcp_udp() {
+        set_input("Dirección IP y Puerto de Servidor", "TcpIpClient", "192.168.0.1:80801");
+        set_input("Byte Iniciador", "InitByte", "Formato 0xCC");
+        set_input("Byte de Separación de datos", "SepByte", "Formato 0xCC");
+        set_input("Byte de Finalización", "EndByte");
     }
 
 
@@ -266,18 +320,19 @@
 
     }
 
-    function set_uart_byte(message, id) {
+    function set_input(message, id, placeholder) {
         var label_node = document.createElement("label");
         label_node.setAttribute("for", id);
         label_node.innerHTML = message;
-        var input_uart_byte = document.createElement("input");
-        input_uart_byte.setAttribute("type", "text");
-        input_uart_byte.setAttribute("id", id);
-        input_uart_byte.setAttribute("placeholder", "Formato 0xCC");
+        var input = document.createElement("input");
+        input.setAttribute("type", "text");
+        input.setAttribute("id", id);
+        input.setAttribute("placeholder", placeholder);
         document.getElementById("TagInputContainer").appendChild(label_node);
-        document.getElementById("TagInputContainer").appendChild(input_uart_byte);
+        document.getElementById("TagInputContainer").appendChild(input);
 
     }
+
 
     function removeElement(elementId) {
         // Removes an element from the document
