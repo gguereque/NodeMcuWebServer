@@ -72,6 +72,7 @@
                 <option value="digital">Digital</option>
                 <option value="analog">Análoga</option>
                 <option value="uart">UART</option>
+                <option value="i2c">I2C</option>
                 <option value="tcp">TCP Client</option>
                 <option value="udp">UDP</option>
                 <option value="http">HTTP</option>
@@ -128,24 +129,30 @@
             case "uart":
                 option_uart();
                 break;
+            case "i2c":
+                option_i2c();
+                break;
             case "tcp":
-                option_tcp();
+                option_tcp_udp();
                 break;
             case "udp":
                 option_tcp_udp();
                 break;
             case "http":
-                set_input("URL de información", "httpUrl", "https://xxx.xxx.xx.x/values?sensor=value");
+                set_input("URL de información", "httpUrl", "https://xxx.xxx.xx.x/values?sensor=value", "TagInputContainer");
+                break;
+            case "opc-ua":
+                option_opcua();
                 break;
             case "modbus-rtu":
                 set_uart_baudrate();
-                set_input("ID Esclavo", "slaveId", "1");
-                set_input("Dirección / Rango de Registros de Dato", "rtuAddress", "400001 o 40001-40003");
+                set_input("ID Esclavo", "slaveId", "1", "TagInputContainer");
+                set_input("Dirección / Rango de Registros de Dato", "rtuAddress", "400001 o 40001-40003", "TagInputContainer");
                 break;
             case "modbus-tcp":
-                set_input("Dirección IP", "tcpIpAddress", "192.168.0.1");
-                set_input("ID Unidad", "unitId", "1");
-                set_input("Dirección / Rango de Registros de Dato", "tcpAddress", "400001 o 40001-40003");
+                set_input("Dirección IP", "tcpIpAddress", "192.168.0.1", "TagInputContainer");
+                set_input("ID Unidad", "unitId", "1", "TagInputContainer");
+                set_input("Dirección / Rango de Registros de Dato", "tcpAddress", "400001 o 40001-40003", "TagInputContainer");
                 break;
         }
 
@@ -204,8 +211,8 @@
     function counter_setting() {
         var checked = !checked;
         if (checked) {
-            set_input("Valor maximo de conteo", "maxCountDigital", "10");
-            set_input("Relacion unidades conteo : unidades salida", "unitRatio", "10:1");
+            set_input("Valor maximo de conteo", "maxCountDigital", "10", "TagInputContainer");
+            set_input("Relacion unidades conteo : unidades salida", "unitRatio", "10:1", "TagInputContainer");
 
         }
     }
@@ -247,18 +254,97 @@
         document.getElementById("TagInputContainer").appendChild(select_digital);
     }
 
+    function option_i2c() {
+        set_input("Dirección I2C", "i2cAddr", "Formato 0xCC", "TagInputContainer");
+        var label_node = document.createElement("label");
+        label_node.setAttribute("for", "numBytes");
+        label_node.innerHTML = "Numero de Bytes a leer";
+        var select_i2c = document.createElement("select");
+        select_i2c.setAttribute("id", "numBytes");
+        select_i2c.setAttribute("onChange", "i2c_changed()");
+
+        for (let i = 0; i <= 4; i++) {
+            var opt = document.createElement('option');
+            switch (i) {
+                case 1:
+                    opt.appendChild(document.createTextNode('1 Byte'));
+                    opt.value = "1_byte";
+                    break;
+                case 2:
+                    opt.appendChild(document.createTextNode('2Bytes'));
+                    opt.value = "2_byte";
+                    break;
+                case 3:
+                    opt.appendChild(document.createTextNode('3Bytes'));
+                    opt.value = "3_byte";
+                    break;
+                case 4:
+                    opt.appendChild(document.createTextNode('4Bytes'));
+                    opt.value = "4_byte";
+                    break;
+            }
+
+            select_i2c.appendChild(opt);
+        }
+
+        document.getElementById("TagInputContainer").appendChild(label_node);
+        document.getElementById("TagInputContainer").appendChild(select_i2c);
+
+    }
+
+    function i2c_changed() {
+        if (document.getElementById("i2c_bytes") != null) {
+            removeElement("i2c_bytes");
+        }
+        var value = document.getElementById("numBytes").value;
+        var div = document.createElement("div");
+        div.setAttribute("id", "i2c_bytes")
+        div.setAttribute("class", "d-flex flex-row justify-space-between");
+        document.getElementById("TagInputContainer").appendChild(div);
+        switch (value) {
+            case "1_byte":
+                set_input("", "byteIn1", "Byte # 1", "i2c_bytes");
+                break;
+            case "2_byte":
+                set_input("", "byteIn1", "Byte # 1", "i2c_bytes");
+                set_input("", "byteIn2", "Byte # 2", "i2c_bytes");
+                break;
+            case "3_byte":
+                set_input("", "byteIn1", "Byte # 1", "i2c_bytes");
+                set_input("", "byteIn2", "Byte # 2", "i2c_bytes");
+                set_input("", "byteIn3", "Byte # 3", "i2c_bytes");
+                break;
+            case "4_byte":
+                set_input("", "byteIn1", "Byte # 1", "i2c_bytes");
+                set_input("", "byteIn2", "Byte # 2", "i2c_bytes");
+                set_input("", "byteIn3", "Byte # 3", "i2c_bytes");
+                set_input("", "byteIn4", "Byte # 4", "i2c_bytes");
+                break;
+
+        }
+        document.getElementById("TagInputContainer").appendChild(label);
+
+
+    }
+
+    function option_opcua() {
+        alert("OPC-UA se encuentra en desarrollo. Una disculpa por las inconvenciencias.")
+    }
+
     function option_uart() {
         set_uart_baudrate();
-        set_input("Byte Iniciador", "InitByte", "Formato 0xCC");
-        set_input("Byte de Separación de datos", "SepByte", "Formato 0xCC");
-        set_input("Byte de Finalización", "EndByte");
+        set_input("Byte Iniciador", "InitByte", "Formato 0xCC", "TagInputContainer");
+        set_input("Byte de Separación de datos", "SepByte", "Formato 0xCC", "TagInputContainer");
+        set_input("Comando de Entrada", "inComand", "Formato String ej: 'TEMPERATURA' ", "TagInputContainer");
+        set_input("Byte de Finalización", "EndByte", "TagInputContainer");
     }
 
     function option_tcp_udp() {
-        set_input("Dirección IP y Puerto de Servidor", "TcpIpClient", "192.168.0.1:80801");
-        set_input("Byte Iniciador", "InitByte", "Formato 0xCC");
-        set_input("Byte de Separación de datos", "SepByte", "Formato 0xCC");
-        set_input("Byte de Finalización", "EndByte");
+        set_input("Dirección IP y Puerto de Servidor", "TcpIpClient", "192.168.0.1:80801", "TagInputContainer");
+        set_input("Byte Iniciador", "InitByte", "Formato 0xCC", "TagInputContainer");
+        set_input("Byte de Separación de datos", "SepByte", "Formato 0xCC", "TagInputContainer");
+        set_input("Comando de Entrada", "inComand", "Formato String ej: 'TEMPERATURA' ", "TagInputContainer");
+        set_input("Byte de Finalización", "EndByte", "TagInputContainer");
     }
 
 
@@ -271,7 +357,7 @@
         var select_uart = document.createElement("select");
         select_uart.setAttribute("id", "BaudOptions");
 
-        for (let i = 0; i <= 6; i++) {
+        for (let i = 0; i <= 9; i++) {
             var opt = document.createElement('option');
             switch (i) {
                 case 1:
@@ -320,16 +406,18 @@
 
     }
 
-    function set_input(message, id, placeholder) {
-        var label_node = document.createElement("label");
-        label_node.setAttribute("for", id);
-        label_node.innerHTML = message;
+    function set_input(message, id, placeholder, id_parent) {
+        if (message != "") {
+            var label_node = document.createElement("label");
+            label_node.setAttribute("for", id);
+            label_node.innerHTML = message;
+            document.getElementById(id_parent).appendChild(label_node);
+        }
         var input = document.createElement("input");
         input.setAttribute("type", "text");
         input.setAttribute("id", id);
         input.setAttribute("placeholder", placeholder);
-        document.getElementById("TagInputContainer").appendChild(label_node);
-        document.getElementById("TagInputContainer").appendChild(input);
+        document.getElementById(id_parent).appendChild(input);
 
     }
 

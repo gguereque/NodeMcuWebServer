@@ -60,16 +60,17 @@
 
 
     <div class="container-custom">
-        <h2 class="text-center mb-3">Visualización de Entrada de Datos</h2>
+        <h2 class="text-center mb-3">Visualización de Objetos</h2>
         <table class="table card-table">
             <thead class="thead-dark">
                 <tr>
                     <th scope="col">ID</th>
-                    <th scope="col">Nombre Alarma</th>
+                    <th scope="col">Nombre de Objeto</th>
                     <th scope="col">Descripción</th>
-                    <th scope="col">Número Destino</th>
-                    <th scope="col">Mensaje</th>
-                    <th scope="col">Remover</th>
+                    <th scope="col">Cantidad de Elementos</th>
+                    <th scope="col">Status</th>
+                    <th scope="col">Ultima Actualización</th>
+                    <th scope="col">Eliminar</th>
                     <th scope="col">Modificar</th>
                 </tr>
             </thead>
@@ -77,11 +78,11 @@
                 %TABLE_DATA%
                 <tr>
                     <th scope="row">1</th>
-                    <td>Alarma de temperatura alta</td>
-                    <td>Alarma para verificar si el horno tiene temperaturas muy altas</td>
-                    <td>+528183394567</td>
-                    <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam non viverra tortor. Nunc sem risus, rutrum in massa vitae, aliquet congue nulla. Donec luctus, nibh ac dignissim dapibus, justo augue elementum risus, id maximus sapien
-                        nisi id magna.</td>
+                    <td>Módulo de pesaje</td>
+                    <td>Modulo de pesaje de 0 a 50 kg para mallas</td>
+                    <td>5</td>
+                    <td>En Falla</td>
+                    <td>27-junio-2020 14:00:01</td>
                     <td>
                         <a href="/eliminar/1" class="btn btn-danger">-</a>
                     </td>
@@ -92,7 +93,7 @@
             </tbody>
         </table>
         <div class="d-flex flex-row-reverse">
-            <a href="alarmas-texto-agregar.html" class="btn btn-success">Agregar Nueva Alarma por Whatsapp</a>
+            <a href="datos-agregar.html" class="btn btn-success">Agregar Objetos</a>
         </div>
     </div>
 

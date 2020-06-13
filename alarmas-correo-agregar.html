@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Optimotion Things Web Server</title>
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body>
+    <div class="main-bar">
+        <div class="mobile-menu">
+            <a href="index.html">
+                <img src="img/Optimotion Fondo Transparente.png" alt="Imagen Optimotion">
+            </a>
+            <a href="#nav" class="menu-symbol">
+             Menu Principal
+            </a>
+        </div>
+        <div class="navbar-title">
+            <a href="index.html">
+                <img src="img/Optimotion Fondo Transparente.png" alt="Imagen Optimotion">
+            </a>
+            <nav id="nav" class="main-nav">
+                <a href="usuarios.html">Registro de Usuarios</a>
+                <a href="subscripcion.html">Subscripcion</a>
+                <a href="datos.html">Entrada de datos</a>
+                <div class="dropdown">
+                    <a href="#">Mediciones</a>
+                    <div class="dropdown-content">
+                        <a href="graficos-tiempo-real.html">Gráficos en tiempo real</a>
+                        <a href="historicos-y-tendencias.html">Históricos y tendencias</a>
+                        <a href="correlaciones.html">Correlaciones</a>
+                    </div>
+                </div>
+                <div class="dropdown">
+                    <a href="#">Configuración</a>
+                    <div class="dropdown-content">
+                        <a href="alarmas-correo.html">Configuración de Alarmas por Correo Electronico</a>
+                        <a href="alarmas-texto.html">Configuración de Alarmas por mensajes de texto</a>
+                        <a href="acciones-fisicas.html">Configuración de Acciones Físicas</a>
+                    </div>
+                </div>
+
+                <div class="dropdown">
+                    <a href="#">Utilidades</a>
+                    <div class="dropdown-content">
+                        <a href="analisis-servidor.html">Analisis de servidor</a>
+                    </div>
+                </div>
+                <a href="login.html">Iniciar Sesión</a>
+                <a href="#" class="close-menu">
+                    <i class="fas fa-times">Cerrar Menú</i>
+                </a>
+            </nav>
+        </div>
+    </div>
+
+
+    <div class="container">
+        <h2>Nueva Alarma de Correo Electrónico</h2>
+        <form>
+            <div class="form-group">
+                <label for="smtpUser">Usuario SMTP</label>
+                <input type="text" class="form-control" id="smtpUser" placeholder="nombre de usuario registrado">
+            </div>
+            <div class="form-group">
+                <label for="smtpPassword">Contraseña SMTP</label>
+                <input type="text" class="form-control" id="smtpPassword" placeholder="contraseña de nombre de usuario">
+            </div>
+            <div class="form-group">
+                <label for="smtpServer">Servidor SMTP</label>
+                <input type="text" class="form-control" id="smtpServer" placeholder="mail.smtp2go.com">
+            </div>
+            <div class="form-group">
+                <label for="smtpPort">Puerto SMTP</label>
+                <input type="text" class="form-control" id="smtpPort" placeholder="2525">
+            </div>
+            <div class="form-group">
+                <label for="userEmail">E-mail de usuario</label>
+                <input type="email" class="form-control" id="userEmail" placeholder="ejemplo@gmail.com">
+            </div>
+            <div class="form-group">
+                <label for="destEmail">E-mail de destino</label>
+                <input type="email" class="form-control" id="destEmail" placeholder="ejemplo@gmail.com">
+            </div>
+            <div class="form-group">
+                <label for="subject">Encabezado</label>
+                <input type="text" class="form-control" id="subject" placeholder="Alerta maxima por alta temperatura">
+            </div>
+            <div class="form-group">
+                <label for="message">Mensaje</label>
+                <textarea name="message" id="messageId" cols="30" rows="10">Escriba aquí su mensaje.</textarea>
+            </div>
+            <div class="form-group">
+                <label for="subject">Entrada de Datos</label>
+                <select class="form-control" id="CommOptions" onchange="commChanged()">
+                    <option value="1">Electroválvulas de paso</option>
+                    <option value="2"> Electroválvulas n/2, n/3</option>
+                    <option value="3">Electroválvulas servoactuadas</option>
+                    <option value="4">Motores eléctricos AC</option>
+                    <option value="5">Motores eléctricos DC</option>
+                    <option value="6">Servo motores AC</option>
+                    <option value="7">Servo motores DC</option>
+                    <option value="8">Resistencias</option>
+                    <option value="otros">Otros</option>
+            </div>
+            <input type="submit"></input>
+        </form>
+    </div>
+</body>
+<script>
+   
+</script>
+
+</html>

@@ -59,43 +59,52 @@
     </div>
 
 
-    <div class="container-custom">
-        <h2 class="text-center mb-3">Visualización de Entrada de Datos</h2>
-        <table class="table card-table">
-            <thead class="thead-dark">
-                <tr>
-                    <th scope="col">ID</th>
-                    <th scope="col">Nombre Alarma</th>
-                    <th scope="col">Descripción</th>
-                    <th scope="col">Número Destino</th>
-                    <th scope="col">Mensaje</th>
-                    <th scope="col">Remover</th>
-                    <th scope="col">Modificar</th>
-                </tr>
-            </thead>
-            <tbody>
-                %TABLE_DATA%
-                <tr>
-                    <th scope="row">1</th>
-                    <td>Alarma de temperatura alta</td>
-                    <td>Alarma para verificar si el horno tiene temperaturas muy altas</td>
-                    <td>+528183394567</td>
-                    <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam non viverra tortor. Nunc sem risus, rutrum in massa vitae, aliquet congue nulla. Donec luctus, nibh ac dignissim dapibus, justo augue elementum risus, id maximus sapien
-                        nisi id magna.</td>
-                    <td>
-                        <a href="/eliminar/1" class="btn btn-danger">-</a>
-                    </td>
-                    <td>
-                        <a href="/modificar-dato/1" class="btn btn-info">cambiar</a>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-        <div class="d-flex flex-row-reverse">
-            <a href="alarmas-texto-agregar.html" class="btn btn-success">Agregar Nueva Alarma por Whatsapp</a>
-        </div>
+    <div class="container">
+        <h2>Nueva Alarma de Correo Electrónico</h2>
+        <form>
+            <div class="form-group">
+                <label for="hedron">HEDRON</label>
+                <input type="text" class="form-control" id="hedron" placeholder="TheAmplitude_Hedron">
+            </div>
+            <div class="form-group">
+                <label for="twilioId">Twilio ID</label>
+                <input type="text" class="form-control" id="twilioId" placeholder="Twilio_SID">
+            </div>
+            <div class="form-group">
+                <label for="twilioToken">Twilio Token</label>
+                <input type="text" class="form-control" id="twilioToken" placeholder="rtreho%$#$%&dfr">
+            </div>
+            <div class="form-group">
+                <label for="userNumber">Numero de Usuario (incluir clave lada)</label>
+                <input type="tel" class="form-control" id="userNumber" placeholder="+52 1 818 456 7654">
+            </div>
+            <div class="form-group">
+                <label for="udestNumber">Numero Destino (incluir clave lada)</label>
+                <input type="tel" class="form-control" id="destNumber" placeholder="+52 1 818 456 7654">
+            </div>
+            <div class="form-group">
+                <label for="message">Mensaje</label>
+                <textarea name="message" id="messageId" cols="30" rows="10">Escriba aquí su mensaje.</textarea>
+            </div>
+            <div class="form-group">
+                <label for="subject">Entrada de Datos</label>
+                <select class="form-control" id="CommOptions" onchange="commChanged()">
+                    <option value="1">Electroválvulas de paso</option>
+                    <option value="2"> Electroválvulas n/2, n/3</option>
+                    <option value="3">Electroválvulas servoactuadas</option>
+                    <option value="4">Motores eléctricos AC</option>
+                    <option value="5">Motores eléctricos DC</option>
+                    <option value="6">Servo motores AC</option>
+                    <option value="7">Servo motores DC</option>
+                    <option value="8">Resistencias</option>
+                    <option value="otros">Otros</option>
+            </div>
+            <input type="submit"></input>
+        </form>
     </div>
-
 </body>
+<script>
+   
+</script>
 
 </html>

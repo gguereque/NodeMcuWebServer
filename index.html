@@ -28,9 +28,14 @@
                 </a>
                 <nav id="nav" class="main-nav">
                     <a href="usuarios.html">Registro de Usuarios</a>
-                    <a href="subscripcion.html">Subscripcion</a>
+                    <a href="subscripcion.html">Subscripcion de Datos</a>
                     <a href="objetos.html">Objetos</a>
-                    <a href="datos.html">Entrada de datos</a>
+                    <div class="dropdown">
+                        <a href="#">Datos</a>
+                        <div class="dropdown-content">
+                            <a href="entradas.html">Entradas</a>
+                        </div>
+                    </div>
                     <div class="dropdown">
                         <a href="#">Mediciones</a>
                         <div class="dropdown-content">
@@ -63,7 +68,7 @@
         </div>
 
         <div class="container-custom">
-            <div class="justify-content-center dashboard-bg card-table mb-1">
+            <div class="justify-content-center mt-2 dashboard-bg card-table mb-1">
                 <div class="row">
                     <h2 class="no-margin mt-1 mb-1 main-title">ESTADO DE VALORES CONTINUOS</h2>
                 </div>
@@ -254,7 +259,11 @@
                                 </tr>
                             </tbody>
                         </table>
+
                     </div>
+                </div>
+                <div class="d-flex flex-row mt-1 mb-1 justify-content-center">
+                    <a href="/manual-entry" class="btn btn-success">Entrada Manual</a>
                 </div>
             </div>
         </div>
