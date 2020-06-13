@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Optimotion Things Server</title>
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div class="main-bar">
+        <div class="mobile-menu">
+            <a href="index.html">
+                <img src="img/Optimotion Fondo Transparente.png" alt="Imagen Optimotion">
+            </a>
+            <a href="#nav" class="menu-symbol">
+         Menu Principal
+        </a>
+        </div>
+        <div class="navbar-title">
+            <a href="index.html">
+                <img src="img/Optimotion Fondo Transparente.png" alt="Imagen Optimotion">
+            </a>
+            <nav id="nav" class="main-nav">
+                <a href="usuarios.html">Registro de Usuarios</a>
+                <a href="subscripcion.html">Subscripcion de Datos</a>
+                <a href="objetos.html">Objetos</a>
+                <div class="dropdown">
+                    <a href="#">Datos</a>
+                    <div class="dropdown-content">
+                        <a href="entradas.html">Entradas</a>
+                        <a href="actuadores.html">Actuadores</a>
+
+                    </div>
+                </div>
+                <div class="dropdown">
+                    <a href="#">Mediciones</a>
+                    <div class="dropdown-content">
+                        <a href="graficos-tiempo-real.html">Gráficos en tiempo real</a>
+                        <a href="historicos-y-tendencias.html">Históricos y tendencias</a>
+                        <a href="correlaciones.html">Correlaciones</a>
+                    </div>
+                </div>
+                <div class="dropdown">
+                    <a href="#">Configuración</a>
+                    <div class="dropdown-content">
+                        <a href="alarmas-correo.html">Configuración de Alarmas por Correo Electronico</a>
+                        <a href="alarmas-texto.html">Configuración de Alarmas por mensajes de texto</a>
+                        <a href="acciones-fisicas.html">Configuración de Acciones Físicas</a>
+                    </div>
+                </div>
+
+                <div class="dropdown">
+                    <a href="#">Utilidades</a>
+                    <div class="dropdown-content">
+                        <a href="analisis-servidor.html">Analisis de servidor</a>
+                    </div>
+                </div>
+                <a href="login.html">Iniciar Sesión</a>
+                <a href="#" class="close-menu">
+                    <i class="fas fa-times">Cerrar Menú</i>
+                </a>
+            </nav>
+        </div>
+    </div>
+
+    <div class="container">
+        <h2>Configuración de Actuador</h2>
+        <form>
+            <div class="form-group">
+                <label for="exampleFormControlInput1">Nombre de Actuador</label>
+                <input type="text" class="form-control" id="nombreActuador" placeholder="nombre de acturador">
+            </div>
+            <div class="form-group">
+                <label for="exampleFormControlInput1">Descripción</label>
+                <input type="text" class="form-control" id="descActuador" placeholder="descripción">
+            </div>
+            <div class="form-group">
+                <label for="exampleFormControlInput1">Tipo de Actuador</label>
+                <select class="form-control" id="CommOptions" onchange="commChanged()">
+                    <option value="1">Electroválvulas de paso</option>
+                    <option value="2"> Electroválvulas n/2, n/3</option>
+                    <option value="3">Electroválvulas servoactuadas</option>
+                    <option value="4">Motores eléctricos AC</option>
+                    <option value="5">Motores eléctricos DC</option>
+                    <option value="6">Servo motores AC</option>
+                    <option value="7">Servo motores DC</option>
+                    <option value="8">Resistencias</option>
+                    <option value="otros">Otros</option>
+                <input type="text" class="form-control" id="tipoActuador" placeholder="tipo de actuador">
+            </div>
+            <div class="form-group" id="controlParams">
+                <div class="form-group">
+                    <label for="CommOptions">Tipo de Control</label>
+                    <select class="form-control" id="CommOptions" onchange="commChanged()">
+                    <option value="on_off">ON / OFF</option>
+                    <option value="velocidad">Velocidad</option>
+                    <option value="torque">Torque</option>
+                    <option value="posición">Posición</option>
+                    <option value="udp">UDP</option>
+                    <option value="http">HTTP</option>
+                    <option value="opc-ua">OPC-UA</option>
+                    <option value="modbus-rtu">MODBUS-RTU</option>
+                    <option value="modbus-tcp">MODBUS-TCP</option>
+                  </select>
+            </div>
+            <div class="form-group">
+                <label for="UOM">Formula / Factor de conversión</label>
+                <input type="text" class="form-control" id="FDC" placeholder="4 * %VALOR% + 5">
+            </div>
+            <div class="form-group">
+                <label for="UOM">Unidad de medición</label>
+                <input type="text" class="form-control" id="UOM" placeholder="unidad de medición">
+            </div>
+
+    </div>
+    <div class="form-group">
+        <label for="UOM">Formula / Factor de conversión</label>
+        <input type="text" class="form-control" id="FDC" placeholder="4 * %VALOR% + 5">
+    </div>
+    <div class="form-group">
+        <label for="UOM">Unidad de medición</label>
+        <input type="text" class="form-control" id="UOM" placeholder="unidad de medición">
+    </div>
+    <div class="form-group">
+        <label for="">Rangos de unidades de medición en condiciones normales</label>
+        <div class="row">
+            <div class="col">
+                <input type="min" class="form-control" id="Min" placeholder="Minimo">
+            </div>
+            <div class="col">
+                <input type="max" class="form-control" id="Max" placeholder="Maximo">
+            </div>
+        </div>
+    </div>
+    <input type="submit"></input>
+    </form>
+    </div>
+
+</body>
+
+</html>

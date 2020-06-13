@@ -7,9 +7,12 @@
     <title>Optimotion Things Web Server</title>
     <link rel="stylesheet" href="css/normalize.css">
     <link rel="stylesheet" href="css/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
 </head>
 
 <body>
+
     <div class="main-bar">
         <div class="mobile-menu">
             <a href="index.html">
@@ -25,8 +28,16 @@
             </a>
             <nav id="nav" class="main-nav">
                 <a href="usuarios.html">Registro de Usuarios</a>
-                <a href="subscripcion.html">Subscripcion</a>
-                <a href="datos.html">Entrada de datos</a>
+                <a href="subscripcion.html">Subscripcion de Datos</a>
+                <a href="objetos.html">Objetos</a>
+                <div class="dropdown">
+                    <a href="#">Datos</a>
+                    <div class="dropdown-content">
+                        <a href="entradas.html">Entradas</a>
+                        <a href="actuadores.html">Actuadores</a>
+
+                    </div>
+                </div>
                 <div class="dropdown">
                     <a href="#">Mediciones</a>
                     <div class="dropdown-content">
@@ -58,17 +69,16 @@
         </div>
     </div>
 
-
     <div class="container-custom">
         <h2 class="text-center mb-3">Visualización de Entrada de Datos</h2>
         <table class="table card-table">
             <thead class="thead-dark">
                 <tr>
                     <th scope="col">ID</th>
-                    <th scope="col">Nombre Alarma</th>
-                    <th scope="col">Descripción</th>
-                    <th scope="col">Número Destino</th>
-                    <th scope="col">Mensaje</th>
+                    <th scope="col">Valor a Monitorear</th>
+                    <th scope="col">Tipo Entrada</th>
+                    <th scope="col">Ubicación / Comando</th>
+                    <th scope="col">UOM</th>
                     <th scope="col">Remover</th>
                     <th scope="col">Modificar</th>
                 </tr>
@@ -77,11 +87,10 @@
                 %TABLE_DATA%
                 <tr>
                     <th scope="row">1</th>
-                    <td>Alarma de temperatura alta</td>
-                    <td>Alarma para verificar si el horno tiene temperaturas muy altas</td>
-                    <td>+528183394567</td>
-                    <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam non viverra tortor. Nunc sem risus, rutrum in massa vitae, aliquet congue nulla. Donec luctus, nibh ac dignissim dapibus, justo augue elementum risus, id maximus sapien
-                        nisi id magna.</td>
+                    <td>Temperatura</td>
+                    <td>Analoga</td>
+                    <td>A0</td>
+                    <td>C</td>
                     <td>
                         <a href="/eliminar/1" class="btn btn-danger">-</a>
                     </td>
@@ -92,10 +101,14 @@
             </tbody>
         </table>
         <div class="d-flex flex-row-reverse">
-            <a href="alarmas-texto-agregar.html" class="btn btn-success">Agregar Nueva Alarma por Whatsapp</a>
+            <a href="actuadores-agregar.html" class="btn btn-success">Agregar Actuador</a>
         </div>
     </div>
 
+
+    <footer>
+        Optimotion 2020©
+    </footer>
 </body>
 
 </html>
